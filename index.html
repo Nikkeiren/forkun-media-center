@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101318">
+  <meta name="description" content="Forkun — ruang pribadi untuk mengelola foto dan video.">
+  <title>Forkun — Media Center</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="stylesheet" href="./assets/css/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" aria-label="Forkun beranda"><span class="brand-mark">f</span><span>forkun</span></a>
+      <div class="side-label">WORKSPACE</div>
+      <nav class="side-nav" aria-label="Navigasi utama">
+        <button class="nav-item active" data-view="overview"><span>▦</span> Ringkasan</button>
+        <button class="nav-item" data-view="library"><span>▧</span> Perpustakaan</button>
+        <button class="nav-item" data-view="collections"><span>▤</span> Koleksi</button>
+        <button class="nav-item" data-view="import"><span>⇧</span> Impor media</button>
+      </nav>
+      <div class="side-label security-label">PRIVASI</div>
+      <button class="nav-item vault-nav" data-view="vault"><span>▣</span> Private Vault <small>segera</small></button>
+      <div class="sidebar-bottom">
+        <div class="storage-card">
+          <div class="storage-icon">◫</div>
+          <div><strong>Penyimpanan lokal</strong><p id="storage-caption">Menghitung media…</p></div>
+        </div>
+        <p class="sidebar-note">Forkun menyimpan impor di perangkat ini untuk versi awal.</p>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="mobile-menu" id="menu-toggle" aria-label="Buka menu">☰</button>
+        <div class="breadcrumb">Workspace <span>/</span> <strong id="page-name">Ringkasan</strong></div>
+        <div class="top-actions"><span class="status-dot"></span><span class="status-text">Mode lokal</span><button class="avatar" aria-label="Profil">N</button></div>
+      </header>
+
+      <section class="view active" id="view-overview">
+        <div class="welcome-row"><div><p class="eyebrow">PERSONAL MEDIA SPACE</p><h1>Semua memorimu,<br><span>dalam satu tempat.</span></h1><p class="subheading">Simpan, temukan, dan kelola foto serta video dengan lebih rapi.</p></div><div class="welcome-art" aria-hidden="true"><div class="art-orbit"></div><div class="art-tile tile-one">▧</div><div class="art-tile tile-two">▶</div><div class="art-tile tile-three">✳</div></div></div>
+        <div class="quick-actions"><button class="primary-btn" data-go="import">＋ Impor media</button><button class="secondary-btn" data-go="library">Buka perpustakaan <span>↗</span></button></div>
+        <div class="section-heading"><div><p class="eyebrow">OVERVIEW</p><h2>Ruang penyimpanan</h2></div><span class="muted" id="media-count">0 item</span></div>
+        <div class="stats-grid">
+          <article class="stat-card"><div class="stat-icon purple">▧</div><p>Total media</p><strong id="stat-total">0</strong><small>Foto dan video</small></article>
+          <article class="stat-card"><div class="stat-icon blue">▣</div><p>Foto</p><strong id="stat-photos">0</strong><small>Gambar tersimpan</small></article>
+          <article class="stat-card"><div class="stat-icon orange">▶</div><p>Video</p><strong id="stat-videos">0</strong><small>Video tersimpan</small></article>
+          <article class="stat-card"><div class="stat-icon green">◫</div><p>Ukuran media</p><strong id="stat-size">0 B</strong><small>Di perangkat ini</small></article>
+        </div>
+        <div class="section-heading recent-heading"><div><p class="eyebrow">YOUR LIBRARY</p><h2>Baru ditambahkan</h2></div><button class="text-btn" data-go="library">Lihat semua →</button></div>
+        <div class="media-grid" id="recent-grid"><div class="empty-state"><div class="empty-symbol">▧</div><strong>Belum ada media</strong><p>Impor foto atau video untuk mulai mengisi perpustakaanmu.</p><button class="secondary-btn" data-go="import">Impor media pertama</button></div></div>
+      </section>
+
+      <section class="view" id="view-library">
+        <div class="page-intro"><p class="eyebrow">YOUR COLLECTION</p><h1>Perpustakaan</h1><p class="subheading">Seluruh media yang tersimpan di perangkat ini.</p></div>
+        <div class="library-toolbar"><label class="search-box"><span>⌕</span><input id="search-input" type="search" placeholder="Cari nama file…"></label><select id="type-filter" aria-label="Filter tipe"><option value="all">Semua media</option><option value="image">Foto</option><option value="video">Video</option></select><button class="primary-btn" data-go="import">＋ Impor</button></div>
+        <div class="media-grid library-grid" id="library-grid"><div class="empty-state"><div class="empty-symbol">▧</div><strong>Perpustakaan masih kosong</strong><p>Media yang kamu impor akan muncul di sini.</p></div></div>
+      </section>
+
+      <section class="view" id="view-collections">
+        <div class="page-intro"><p class="eyebrow">ORGANIZE</p><h1>Koleksi</h1><p class="subheading">Kelompokkan media agar lebih mudah ditemukan.</p></div>
+        <div class="feature-panel"><div class="feature-icon">▤</div><div><h2>Koleksi akan hadir berikutnya</h2><p>Struktur koleksi dan album sedang disiapkan. Media yang sudah diimpor tetap aman di penyimpanan lokal browser.</p></div></div>
+      </section>
+
+      <section class="view" id="view-import">
+        <div class="page-intro"><p class="eyebrow">ADD TO YOUR SPACE</p><h1>Impor media</h1><p class="subheading">Tambahkan foto dan video dari perangkatmu ke perpustakaan Forkun.</p></div>
+        <label class="dropzone" id="dropzone"><input id="file-input" type="file" accept="image/*,video/*" multiple><span class="upload-icon">⇧</span><strong>Ketuk untuk memilih foto atau video</strong><span>atau seret file ke area ini</span><small>File disimpan di browser pada perangkat ini.</small></label>
+        <div class="import-progress" id="import-status" aria-live="polite"></div>
+        <div class="feature-panel downloader-panel"><div class="feature-icon">↗</div><div><h2>Impor dari tautan</h2><p>Kolom tautan disiapkan untuk integrasi resmi. Forkun belum mengunduh langsung dari platform pihak ketiga; jangan masukkan tautan privat atau konten yang tidak kamu punya izin untuk simpan.</p><div class="url-row"><input id="source-url" type="url" placeholder="https://…"><button class="secondary-btn" id="check-url">Periksa tautan</button></div><p class="inline-message" id="url-message"></p></div></div>
+      </section>
+
+      <section class="view" id="view-vault">
+        <div class="page-intro"><p class="eyebrow">PRIVATE BY DESIGN</p><h1>Private Vault</h1><p class="subheading">Ruang khusus untuk media yang ingin kamu lindungi.</p></div>
+        <div class="vault-notice"><div class="vault-lock">▣</div><h2>Lapisan keamanan sedang dirancang</h2><p>PIN, kata sandi utama, biometrik, Recovery Key, dan enkripsi belum diaktifkan. Karena itu, Private Vault belum menerima file apa pun. Kami tidak akan menampilkan perlindungan palsu sebelum sistem keamanan diuji.</p><span class="coming-tag">DALAM PENGEMBANGAN</span></div>
+      </section>
+
+      <footer class="footer"><span>FORKUN <span class="footer-dot">•</span> PERSONAL MEDIA CENTER</span><span>Versi awal · Penyimpanan lokal</span></footer>
+    </main>
+  </div>
+  <script type="module" src="./assets/js/app.js"></script>
+</body>
+</html>
