@@ -1,0 +1,10 @@
+{
+  "name": "Forkun — Personal Media Center",
+  "short_name": "Forkun",
+  "description": "Ruang pribadi untuk menyimpan dan mengelola foto serta video.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#101318",
+  "theme_color": "#101318",
+  "icons": []
+}
