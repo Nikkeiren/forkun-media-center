@@ -1,10 +1,11 @@
-const CACHE_NAME = "forkun-shell-v1";
+const CACHE_NAME = "forkun-shell-v2";
 const APP_SHELL = [
   "./",
   "./index.html",
   "./manifest.webmanifest",
   "./assets/css/styles.css",
   "./assets/js/app.js",
+  "./assets/js/downloader.js",
   "./assets/js/storage.js"
 ];
 
