@@ -19,7 +19,8 @@ Forkun adalah ruang pribadi berbasis web untuk mengimpor, melihat, dan mengelola
 - Akun pengguna dan sinkronisasi cloud.
 - Supabase, Cloudflare R2, atau backend.
 - Private Vault, enkripsi media, PIN, master password, biometrik, dan recovery key.
-- Pengunduh platform sosial. Pemeriksaan tautan saat ini hanya memeriksa format URL, bukan mengunduh konten.
+- Deteksi tautan TikTok, Instagram, dan X dengan penjelasan batas integrasi.
+- Impor file media langsung dari URL publik jika server mengizinkan CORS dan responsnya benar-benar berupa foto/video.
 - Album/koleksi yang dapat diedit.
 
 **Penting:** IndexedDB adalah penyimpanan browser pada perangkat/origin ini, bukan backup. Browser dapat menerapkan kuota atau menghapus data situs. Jangan jadikan versi awal ini satu-satunya salinan file penting. Private Vault belum aktif dan jangan gunakan aplikasi ini untuk menyimpan media rahasia.
@@ -61,10 +62,11 @@ Untuk pengembangan lokal, jalankan server HTTP statis dari folder proyek. Jangan
 ## Rencana pengembangan
 
 1. Memperkuat pengalaman perpustakaan lokal: metadata, preview, validasi file, dan penanganan kuota.
-2. Merancang model akun dan backend cloud, termasuk kebijakan akses.
-3. Mengimplementasikan sinkronisasi cloud dan backup.
-4. Mendesain Private Vault dengan enkripsi sisi klien, master password, Recovery Key, dan biometrik yang didukung perangkat.
-5. Melakukan audit dan pengujian keamanan sebelum Vault menerima file sungguhan.
+2. Meneliti integrasi resmi/berizin untuk platform sosial; deteksi tautan saja tidak berarti media bisa diunduh.
+3. Merancang model akun dan backend cloud, termasuk kebijakan akses.
+4. Mengimplementasikan sinkronisasi cloud dan backup.
+5. Mendesain Private Vault dengan enkripsi sisi klien, master password, Recovery Key, dan biometrik yang didukung perangkat.
+6. Melakukan audit dan pengujian keamanan sebelum Vault menerima file sungguhan.
 
 ## Lisensi
 
