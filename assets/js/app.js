@@ -1,4 +1,5 @@
 import { saveMedia, getMedia, deleteMedia } from "./storage.js";
+import { inspectMediaLink, downloadDirectMedia } from "./downloader.js";
 
 const $ = (selector) => document.querySelector(selector);
 const views = ["overview", "library", "collections", "import", "vault"];
@@ -126,15 +127,28 @@ const dropzone = $("#dropzone");
 }));
 dropzone.addEventListener("drop", (event) => importFiles(event.dataTransfer.files));
 
-$("#check-url").addEventListener("click", () => {
+$("#check-url").addEventListener("click", async () => {
   const field = $("#source-url");
+  const button = $("#check-url");
   const message = $("#url-message");
+  const raw = field.value.trim();
+  button.disabled = true;
   try {
-    const url = new URL(field.value);
-    if (!["http:", "https:"].includes(url.protocol)) throw new Error("protocol");
-    message.textContent = "Format tautan valid. Pengunduhan belum tersedia; integrasi platform harus memakai metode resmi dan izin yang sesuai.";
-  } catch {
-    message.textContent = "Masukkan tautan lengkap yang valid, diawali https://";
+    const info = inspectMediaLink(raw);
+    if (info.kind === "social") {
+      message.textContent = info.message;
+      return;
+    }
+    message.textContent = "Mencoba mengambil file media langsung…";
+    const saved = await downloadDirectMedia(info.url, saveMedia);
+    message.textContent = `Berhasil menyimpan ${saved.name} ke perpustakaan Forkun.`;
+    field.value = "";
+    await refresh();
+  } catch (error) {
+    console.warn("Link import:", error);
+    message.textContent = error.message || "Tautan tidak dapat diunduh. Server mungkin membatasi akses lintas situs (CORS).";
+  } finally {
+    button.disabled = false;
   }
 });
 
